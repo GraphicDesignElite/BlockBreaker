@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 
-	public Player player;
-	private Vector3 paddleToBallVector;
+	private Player player;
+	private Vector3 distanceToPlayerVector;
 	private bool levelStarted = false;
 
 
 	void Start () {
+		player = GameObject.FindObjectOfType<Player> ();
 		// Find the spacial difference from player to ball
-		paddleToBallVector = this.transform.position - player.transform.position;
+		distanceToPlayerVector = this.transform.position - player.transform.position;
 
 	}
 	
@@ -18,7 +19,7 @@ public class Ball : MonoBehaviour {
 	void Update () {
 		if (!levelStarted) {
 			// Lock the ball in start position until the game begins
-			this.transform.position = player.transform.position + paddleToBallVector;
+			this.transform.position = player.transform.position + distanceToPlayerVector;
 			// Wait for launch
 			if(Input.GetMouseButtonDown(0)){
 				this.GetComponent<Rigidbody2D>().velocity = new Vector2 (2, 10);

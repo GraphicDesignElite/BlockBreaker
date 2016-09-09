@@ -1,0 +1,18 @@
+Paddle bounces when hit
+ball rolls when game not started
+ball spin
+block crack on hits
+
+backgrounds - under water?
+
+
+powerups
+
+gum - sticks each hit
+boost - speed boost for paddle or oil ( slows down paddle )
+size - increase or decrease size ( good or bad )
+double ball
+shoot weapons added to sides temporarily
+
+
+Fire ball - goes right through all kinds of blocks
