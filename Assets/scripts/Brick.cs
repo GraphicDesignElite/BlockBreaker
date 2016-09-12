@@ -2,22 +2,34 @@
 using System.Collections;
 
 public class Brick : MonoBehaviour {
+	private LevelManager LevelManager;
+	private int TimesHit; // How many times has the brick been hit
+	public int MaxHits = 1; // What is the max hits this brick can take before breaking
+	public static int BreakableBrickCount = 0; // Count how many bricks are breakable in this level
+	private bool IsBreakable; // Decide whether this brick can be broken or not
+	public AudioClip CrackSound;
 
-	private int TimesHit;
-	private LevelManager levelmanager;
-	public int MaxHits = 1;
-	public Sprite[] hitSprites;
-
+	private int ScoreValue = 0; // how much is our brick worth to hit
 	void Awake(){
-		SetColor ();
+		SetColor (); // Set our color to the correct number of hits indicator
 	}
-	// Use this for initialization
 	void Start () {
-		levelmanager = GameObject.FindObjectOfType<LevelManager> ();
-		TimesHit = 0;
+		//Get out LevelManager
+		LevelManager = GameObject.FindObjectOfType<LevelManager> ();
+		TimesHit = 0; // Initialize TimesHit
+
+
+
+		IsBreakable = this.tag == "IsBreakable"; // Find out if this brick can be broken based on tag
+		if (IsBreakable) {
+			BreakableBrickCount++; // Count our IsBreakable bricks per level
+			ScoreValue = 10 * MaxHits; // every brick is worth 10 x total number of hits each hit
+		}
 	}
 	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.name == "Ball") {
+		bool ball = other.gameObject.name == "Ball"; // Is this our ball? Only the ball can break bricks
+		AudioSource.PlayClipAtPoint(CrackSound, transform.position);
+		if (ball && IsBreakable) { // only if hit by the ball and if its set as IsBreakable
 			TimesHit++;
 			SetColor ();
 		}
@@ -26,17 +38,13 @@ public class Brick : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (TimesHit >= MaxHits) {
-			print ("im dead");
+			BreakableBrickCount--;
+			LevelManager.BrickDestroyed ();
 			Destroy (this.gameObject);
 		}
 	}
 
-	void WinLevel(){
-		levelmanager.LoadNextLevel ();
-	}
-
-
-
+		
 	// Set Color overlay based on the amount of hits required to destroy a brick
 	void SetColor(){
 		switch (MaxHits - TimesHit)
@@ -59,5 +67,9 @@ public class Brick : MonoBehaviour {
 		default:
 			break;
 		}
+
+	}
+	void WinLevel(){
+		LevelManager.LoadNextLevel ();
 	}
 }

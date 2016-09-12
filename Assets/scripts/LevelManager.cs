@@ -14,5 +14,10 @@ public class LevelManager : MonoBehaviour {
 		Debug.Log ("Quit requested");
 		Application.Quit ();
 	}
-
+	public void BrickDestroyed(){
+		if(Brick.BreakableBrickCount <=0 ){
+		LoadNextLevel ();
+	
+		}
+	}
 }
