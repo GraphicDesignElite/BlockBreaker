@@ -2,9 +2,16 @@ Paddle bounces when hit
 ball rolls when game not started
 ball spin
 block crack on hits
+shrink ball
 
-backgrounds - under water?
 
+*/*/* Pixels per game unit = 120 px
+game units across  = 16
+
+
+backgrounds - geometrick
+
+inroduce pegs / bumpers for fun?
 
 powerups
 
@@ -16,3 +23,4 @@ shoot weapons added to sides temporarily
 
 
 Fire ball - goes right through all kinds of blocks
+Radiant wave - sends out a wave that turns all blocks it hits into level 1 blocks

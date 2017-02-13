@@ -47,11 +47,18 @@
   <ItemGroup>
      <Compile Include="Assets\scripts\Ball.cs" />
      <Compile Include="Assets\scripts\Brick.cs" />
+     <Compile Include="Assets\scripts\BrickScore.cs" />
      <Compile Include="Assets\scripts\GameStatus.cs" />
      <Compile Include="Assets\scripts\LevelManager.cs" />
+     <Compile Include="Assets\scripts\LivesDisplay.cs" />
      <Compile Include="Assets\scripts\LoseColider.cs" />
+     <Compile Include="Assets\scripts\MessageText.cs" />
      <Compile Include="Assets\scripts\MusicPlayer.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
+     <Compile Include="Assets\scripts\Powerup.cs" />
+     <Compile Include="Assets\scripts\ResetGame.cs" />
+     <Compile Include="Assets\scripts\ScoreText.cs" />
+     <Compile Include="Assets\scripts\ShowMultiplier.cs" />
      <None Include="Assets\notes\ideas.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
